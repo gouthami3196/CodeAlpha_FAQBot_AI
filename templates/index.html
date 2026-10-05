@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQBot AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="brand">
+            <div class="bot-icon">🤖</div>
+
+            <div>
+                <h1>FAQBot AI</h1>
+                <p>Intelligent FAQ Assistant</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            Online
+        </div>
+    </header>
+
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <h2>👋 Hello! I'm FAQBot AI</h2>
+
+        <p>
+            Ask me anything about this project.
+            I'll find the most relevant answer using Natural Language Processing.
+        </p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <strong>{{ faq_count }}</strong>
+                <span>FAQs</span>
+            </div>
+
+            <div class="stat-card">
+                <strong>NLP</strong>
+                <span>Technology</span>
+            </div>
+
+            <div class="stat-card">
+                <strong>AI</strong>
+                <span>Matching</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Quick Questions -->
+    <section class="quick-section">
+
+        <h3>💡 Try asking</h3>
+
+        <div class="quick-buttons">
+
+            <button onclick="askSuggestion('What is FAQBot AI?')">
+                What is FAQBot AI?
+            </button>
+
+            <button onclick="askSuggestion('What is NLP?')">
+                What is NLP?
+            </button>
+
+            <button onclick="askSuggestion('How does the chatbot work?')">
+                How does it work?
+            </button>
+
+            <button onclick="askSuggestion('What is cosine similarity?')">
+                What is cosine similarity?
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Chat Area -->
+    <main class="chat-box">
+
+        <div id="chatMessages" class="chat-messages">
+
+            <div class="message bot-message">
+
+                <div class="avatar">
+                    🤖
+                </div>
+
+                <div class="message-content">
+
+                    <p>
+                        Hi! I'm ready to answer your questions.
+                        Try one of the suggested questions above or type your own question below.
+                    </p>
+
+                    <span class="message-time">
+                        FAQBot AI
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Typing Indicator -->
+        <div id="typingIndicator" class="typing hidden">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <label>FAQBot is thinking...</label>
+
+        </div>
+
+
+        <!-- Input Area -->
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="questionInput"
+                placeholder="Type your question here..."
+                autocomplete="off"
+            >
+
+            <button id="sendButton" onclick="sendQuestion()">
+                Send ➤
+            </button>
+
+        </div>
+
+
+        <div class="input-hint">
+            Press <strong>Enter</strong> to send your question
+        </div>
+
+    </main>
+
+
+    <!-- Answer Information -->
+    <section id="matchInfo" class="match-info hidden">
+
+        <div>
+            <span class="info-label">
+                🔍 Matched FAQ
+            </span>
+
+            <p id="matchedQuestion">
+                -
+            </p>
+        </div>
+
+        <div class="confidence-box">
+
+            <span class="info-label">
+                🧠 Confidence
+            </span>
+
+            <strong id="confidence">
+                0%
+            </strong>
+
+            <span id="confidenceStatus">
+                -
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            🧠 Powered by NLTK • TF-IDF • Cosine Similarity
+        </p>
+
+        <button onclick="clearChat()">
+            🧹 Clear Chat
+        </button>
+
+    </footer>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
